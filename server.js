@@ -6,9 +6,11 @@ const port = 3000;
 
 app.use(express.json());
 
+const imageGenRoute = 'https://api.openai.com/v1/images/generations';
 app.post('/generate-image', async (req, res) => {
-  try {
-    const response = await axios.post('https://api.openai.com/v1/images/generations', {
+  
+    try {
+    const response = await axios.post(imageGenRoute, {
       model: "dall-e-3", 
       prompt: req.body.prompt,
       n: req.body.n || 1,
